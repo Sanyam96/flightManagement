@@ -7,7 +7,7 @@ public class Constants {
 
     public static final String filesPath = "/home/sanyam/Documents/flightsearch/dataset/";
 
-    public static final String fileSplitParam = "|";
+    public static final String fileSplitParam = "\\|";
 
     public static final String datePattern = "dd-MM-yyyy";
 

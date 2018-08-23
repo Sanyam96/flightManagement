@@ -2,6 +2,8 @@ package com.nagarro.airlines.entity;
 
 import com.nagarro.airlines.enums.FlightClass;
 
+import java.util.Date;
+
 /**
  * @author Sanyam Goel created on 22/8/18
  */
@@ -13,31 +15,34 @@ public class FlightInfo {
 
     private String arrivalLocation;
 
-    private String validTillDate;
+    private Date validTillDate;
 
     private String flightTime;
 
-    private String flightDuration;
+    private double flightDuration;
 
-    private String fareCharges;
+    private double fareCharges;
 
     private char seatAvailability;
 
-    private FlightClass flightClass;
+    private String flightClass;
 
-    /**
-     * Constructor
-     * @param flightNumber
-     * @param departureLocation
-     * @param arrivalLocation
-     * @param validTillDate
-     * @param flightTime
-     * @param flightDuration
-     * @param fareCharges
-     * @param seatAvailability
-     * @param flightClass
-     */
-    public FlightInfo(String flightNumber, String departureLocation, String arrivalLocation, String validTillDate, String flightTime, String flightDuration, String fareCharges, char seatAvailability, FlightClass flightClass) {
+    @Override
+    public String toString() {
+        return "FlightInfo{" +
+                "flightNumber='" + flightNumber + '\'' +
+                ", departureLocation='" + departureLocation + '\'' +
+                ", arrivalLocation='" + arrivalLocation + '\'' +
+                ", validTillDate=" + validTillDate +
+                ", flightTime='" + flightTime + '\'' +
+                ", flightDuration=" + flightDuration +
+                ", fareCharges='" + fareCharges + '\'' +
+                ", seatAvailability=" + seatAvailability +
+                ", flightClass='" + flightClass + '\'' +
+                '}';
+    }
+
+    public FlightInfo(String flightNumber, String departureLocation, String arrivalLocation, Date validTillDate, String flightTime, double flightDuration, double fareCharges, char seatAvailability, String flightClass) {
         this.flightNumber = flightNumber;
         this.departureLocation = departureLocation;
         this.arrivalLocation = arrivalLocation;
@@ -47,21 +52,6 @@ public class FlightInfo {
         this.fareCharges = fareCharges;
         this.seatAvailability = seatAvailability;
         this.flightClass = flightClass;
-    }
-
-    @Override
-    public String toString() {
-        return "FlightInfo{" +
-                "flightNumber='" + flightNumber + '\'' +
-                ", departureLocation='" + departureLocation + '\'' +
-                ", arrivalLocation='" + arrivalLocation + '\'' +
-                ", validTillDate='" + validTillDate + '\'' +
-                ", flightTime='" + flightTime + '\'' +
-                ", flightDuration='" + flightDuration + '\'' +
-                ", fareCharges='" + fareCharges + '\'' +
-                ", seatAvailability=" + seatAvailability +
-                ", flightClass=" + flightClass +
-                '}';
     }
 
     public String getFlightNumber() {
@@ -88,11 +78,11 @@ public class FlightInfo {
         this.arrivalLocation = arrivalLocation;
     }
 
-    public String getValidTillDate() {
+    public Date getValidTillDate() {
         return validTillDate;
     }
 
-    public void setValidTillDate(String validTillDate) {
+    public void setValidTillDate(Date validTillDate) {
         this.validTillDate = validTillDate;
     }
 
@@ -104,19 +94,19 @@ public class FlightInfo {
         this.flightTime = flightTime;
     }
 
-    public String getFlightDuration() {
+    public double getFlightDuration() {
         return flightDuration;
     }
 
-    public void setFlightDuration(String flightDuration) {
+    public void setFlightDuration(double flightDuration) {
         this.flightDuration = flightDuration;
     }
 
-    public String getFareCharges() {
+    public double getFareCharges() {
         return fareCharges;
     }
 
-    public void setFareCharges(String fareCharges) {
+    public void setFareCharges(double fareCharges) {
         this.fareCharges = fareCharges;
     }
 
@@ -128,11 +118,11 @@ public class FlightInfo {
         this.seatAvailability = seatAvailability;
     }
 
-    public FlightClass getFlightClass() {
+    public String getFlightClass() {
         return flightClass;
     }
 
-    public void setFlightClass(FlightClass flightClass) {
+    public void setFlightClass(String flightClass) {
         this.flightClass = flightClass;
     }
 }

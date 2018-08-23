@@ -1,17 +1,27 @@
 package com.nagarro.airlines;
 
+import com.nagarro.airlines.entity.FlightInfo;
 import com.nagarro.airlines.entity.UserInputParams;
 import com.nagarro.airlines.enums.FlightClass;
 import com.nagarro.airlines.enums.FlightOutputType;
+import com.nagarro.airlines.intefaces.FlightComparator;
+import com.nagarro.airlines.service.FlightFilesReader;
 import com.nagarro.airlines.utilities.Constants;
 import com.nagarro.airlines.utilities.ScannerInstance;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 
 public class App {
+
+    private static HashMap<String, ArrayList<FlightInfo>> flightResults;
+
     public static void main(String[] args) {
         takeInput();
     }
@@ -72,7 +82,22 @@ public class App {
         UserInputParams userInputParams = new UserInputParams(departureLocation, arrivalLocation, flightDate, flightClass, flightOutputType);
         System.out.println(userInputParams.toString());
 
+        readFiles(flightResults, userInputParams);
+
     }
 
+    private static void readFiles(HashMap<String, ArrayList<FlightInfo>> flightResults, UserInputParams userInputParams) {
+
+        File flightFolder = new File(Constants.filesPath);
+        ArrayList<File> listOfFiles = new ArrayList<>(Arrays.asList(flightFolder.listFiles()));
+
+        listOfFiles.parallelStream().forEach(csvFile -> {
+            FlightFilesReader flightFilesReader = new FlightFilesReader();
+            ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
+//            System.out.println(flights);
+
+        });
+
+    }
 
 }
