@@ -24,7 +24,7 @@ public class ReadAllFilesFromDirectory {
             FlightFilesReader flightFilesReader = new FlightFilesReader();
             ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
             OutputData outputData = new OutputData(flights);
-            System.out.println(outputData.toString());
+            System.out.println(outputData);
         });
 
     }

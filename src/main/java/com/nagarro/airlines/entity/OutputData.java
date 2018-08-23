@@ -12,11 +12,15 @@ public class OutputData {
         this.flights = flights;
     }
 
-    @Override
     public String toString() {
-        return "OutputData{" +
-                "flights=" + flights +
-                '}' + '\n';
+        String temp = "";
+        for (FlightInfo flight : flights) {
+//            temp = "[ Flight Number : " + flight.getFlightNumber() + "\n" +
+//                    "Flight Class : " + flight.getFlightClass() + "\n" +
+//                    "Flight Fare : " + flight.getFareCharges() + "]\n";
+            temp += flight.toString() + "\n";
+        }
+        return temp;
     }
 
     public ArrayList<FlightInfo> getFlights() {
