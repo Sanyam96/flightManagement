@@ -1,7 +1,6 @@
 package com.nagarro.airlines.service;
 
 import com.nagarro.airlines.models.FlightInfo;
-import com.nagarro.airlines.models.OutputData;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.utilities.Constants;
 
@@ -32,32 +31,6 @@ public class ReadAllFilesFromDirectory {
                     break;
             }
             flightResults.put(csvFile.getName(), flights);
-//            OutputData outputData = new OutputData();
-//            outputData.setFlights(flights);
-//            System.out.println(outputData);
         });
     }
 }
-
-//switch (userInputParams.getOutputPreference()) {
-//                case BY_FARE:
-//                    Collections.sort(flights, Comparator.comparing(FlightInfo :: getFareCharges));
-//                    break;
-//                case BY_FARE_DURATION:
-//                    Collections.sort(flights, Comparator.comparing(FlightInfo :: getFareCharges).thenComparing(FlightInfo::getFlightDuration));
-//                    break;
-//                default:
-//                    break;
-//            }
-//            switch (userInputParams.getOutputPreference()) {
-//                case BY_FARE:
-//                    flights.sort(Comparator.comparing(FlightInfo::getFareCharges));
-//                    break;
-//                case BY_FARE_DURATION:
-//                    flights.sort(Comparator.comparing(FlightInfo::getFareCharges).thenComparing(FlightInfo::getFlightDuration));
-//                default:
-//                    break;
-//            }
-
-//            outputData.setFlights(flights);
-//            System.out.println(outputData);

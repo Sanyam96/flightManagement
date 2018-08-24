@@ -13,9 +13,6 @@ public class OutputData {
     public String toString() {
         String temp = "";
         for (FlightInfo flight : flights) {
-//            temp = "[ Flight Number : " + flight.getFlightNumber() + "\n" +
-//                    "Flight Class : " + flight.getFlightClass() + "\n" +
-//                    "Flight Fare : " + flight.getFareCharges() + "]\n";
             temp += flight.toString() + "\n";
         }
         return temp;

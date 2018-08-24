@@ -77,10 +77,7 @@ public class App {
 
 
         UserInputParams userInputParams = new UserInputParams(departureLocation, arrivalLocation, flightDate, flightClass, flightOutputType);
-//        System.out.println(userInputParams.toString());
-//        OutputData outputData = new OutputData();
         readAllFilesFromDirectory.readFiles(flightResults, userInputParams);
-
         System.out.println(flightResults);
 
     }
