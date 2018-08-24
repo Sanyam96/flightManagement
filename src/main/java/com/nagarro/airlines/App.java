@@ -1,6 +1,7 @@
 package com.nagarro.airlines;
 
 import com.nagarro.airlines.models.FlightInfo;
+import com.nagarro.airlines.models.OutputData;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.enums.FlightClass;
 import com.nagarro.airlines.enums.FlightOutputType;
@@ -15,7 +16,7 @@ import java.util.*;
 
 public class App {
 
-    private static HashMap<String, ArrayList<FlightInfo>> flightResults;
+    private static HashMap<String, ArrayList<FlightInfo>> flightResults = new HashMap<>();
 
     public static void main(String[] args) {
         takeInput();
@@ -77,7 +78,10 @@ public class App {
 
         UserInputParams userInputParams = new UserInputParams(departureLocation, arrivalLocation, flightDate, flightClass, flightOutputType);
 //        System.out.println(userInputParams.toString());
+//        OutputData outputData = new OutputData();
         readAllFilesFromDirectory.readFiles(flightResults, userInputParams);
+
+        System.out.println(flightResults);
 
     }
 
