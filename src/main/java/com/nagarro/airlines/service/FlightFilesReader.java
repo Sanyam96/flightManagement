@@ -25,6 +25,7 @@ public class FlightFilesReader {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.datePattern);
         try (BufferedReader bReader = new BufferedReader(new FileReader(csvFile))) {
             bReader.readLine();
+
             while ((flightDetails = bReader.readLine()) != null) {
                 String flightData[] = flightDetails.split(Constants.fileSplitParam);
 
@@ -35,12 +36,31 @@ public class FlightFilesReader {
                         (userInputParams.getFlightDate().before(validTillDate) || userInputParams.getFlightDate().equals(validTillDate)) &&
                         flightData[8].contains(userInputParams.getFlightClass().toString()) &&
                         flightData[7].equals("Y")) {
-                    FlightInfo flight = new FlightInfo(flightData[0], flightData[1], flightData[2], userInputParams.getFlightDate(), flightData[4], Double.parseDouble(flightData[5]), Double.parseDouble(flightData[6]), flightData[7].charAt(0), userInputParams.getFlightClass().toString());
+
+                    FlightInfo flight = new FlightInfo();
+                    flight.setFlightNumber(flightData[0]);
+                    flight.setDepartureLocation(flightData[1]);
+                    flight.setArrivalLocation(flightData[2]);
+                    flight.setValidTillDate(userInputParams.getFlightDate());
+                    flight.setFlightTime(flightData[4]);
+                    flight.setFlightDuration(Double.parseDouble(flightData[5]));
+                    flight.setSeatAvailability(flightData[7].charAt(0));
+                    flight.setFlightClass(userInputParams.getFlightClass().toString());
+                    switch (userInputParams.getFlightClass()) {
+                        case E:
+                            flight.setFareCharges(Double.parseDouble(flightData[6]));
+                            break;
+                        case B:
+                            double fare = Double.parseDouble(flightData[6]);
+                            fare = fare + 0.4 * fare;
+                            flight.setFareCharges(fare);
+                            break;
+                        default:
+                            flight.setFareCharges(Double.parseDouble(flightData[6]));
+                    }
                     flightInfos.add(flight);
-                    //System.out.println(csvFile.getName() + flight.toString());
                 }
             }
-
         } catch (IOException fe) {
             System.err.println("File Not found");
             fe.printStackTrace();

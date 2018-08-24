@@ -17,11 +17,10 @@ public class ReadAllFilesFromDirectory {
 
         File flightFolder = new File(Constants.filesPath);
         ArrayList<File> listOfFiles = new ArrayList<>(Arrays.asList(Objects.requireNonNull(flightFolder.listFiles())));
-        OutputData outputData = new OutputData();
 
         listOfFiles.parallelStream().forEach(csvFile -> {
             FlightFilesReader flightFilesReader = new FlightFilesReader();
-            final ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
+            ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
             switch (userInputParams.getOutputPreference()) {
                 case BY_FARE:
                     Collections.sort(flights, Comparator.comparing(FlightInfo :: getFareCharges));
@@ -32,9 +31,9 @@ public class ReadAllFilesFromDirectory {
                 default:
                     break;
             }
+            OutputData outputData = new OutputData();
             outputData.setFlights(flights);
             System.out.println(outputData);
         });
-
     }
 }

@@ -25,6 +25,8 @@ public class FlightInfo {
 
     private String flightClass;
 
+    public FlightInfo() {}
+
     @Override
     public String toString() {
         return "FlightInfo{" +
