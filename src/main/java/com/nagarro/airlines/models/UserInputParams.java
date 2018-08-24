@@ -1,4 +1,4 @@
-package com.nagarro.airlines.entity;
+package com.nagarro.airlines.models;
 
 import com.nagarro.airlines.enums.FlightClass;
 import com.nagarro.airlines.enums.FlightOutputType;

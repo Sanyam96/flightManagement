@@ -1,7 +1,7 @@
 package com.nagarro.airlines;
 
-import com.nagarro.airlines.entity.FlightInfo;
-import com.nagarro.airlines.entity.UserInputParams;
+import com.nagarro.airlines.models.FlightInfo;
+import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.enums.FlightClass;
 import com.nagarro.airlines.enums.FlightOutputType;
 import com.nagarro.airlines.service.ReadAllFilesFromDirectory;

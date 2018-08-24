@@ -1,7 +1,7 @@
 package com.nagarro.airlines.service;
 
-import com.nagarro.airlines.entity.FlightInfo;
-import com.nagarro.airlines.entity.UserInputParams;
+import com.nagarro.airlines.models.FlightInfo;
+import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.utilities.Constants;
 
 import java.io.BufferedReader;

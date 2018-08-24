@@ -1,6 +1,7 @@
-package com.nagarro.airlines.entity;
+package com.nagarro.airlines.models;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Sanyam Goel created on 22/8/18
@@ -8,9 +9,6 @@ import java.util.ArrayList;
 public class OutputData {
     ArrayList<FlightInfo> flights;
 
-    public OutputData(ArrayList<FlightInfo> flights) {
-        this.flights = flights;
-    }
 
     public String toString() {
         String temp = "";
@@ -23,7 +21,7 @@ public class OutputData {
         return temp;
     }
 
-    public ArrayList<FlightInfo> getFlights() {
+    public List<FlightInfo> getFlights() {
         return flights;
     }
 

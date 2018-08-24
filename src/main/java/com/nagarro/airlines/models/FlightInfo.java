@@ -1,6 +1,4 @@
-package com.nagarro.airlines.entity;
-
-import com.nagarro.airlines.enums.FlightClass;
+package com.nagarro.airlines.models;
 
 import java.util.Date;
 
