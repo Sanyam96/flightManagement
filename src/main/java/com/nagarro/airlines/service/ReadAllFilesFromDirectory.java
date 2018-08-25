@@ -1,9 +1,12 @@
 package com.nagarro.airlines.service;
 
+import com.nagarro.airlines.io.Output;
 import com.nagarro.airlines.models.FlightInfo;
+import com.nagarro.airlines.models.OutputData;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.utilities.Constants;
 
+import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.util.*;
 
@@ -17,7 +20,7 @@ public class ReadAllFilesFromDirectory {
         File flightFolder = new File(Constants.filesPath);
         ArrayList<File> listOfFiles = new ArrayList<>(Arrays.asList(Objects.requireNonNull(flightFolder.listFiles())));
 
-        listOfFiles.parallelStream().forEach(csvFile -> {
+        /*listOfFiles.stream().forEach(csvFile -> {
             FlightFilesReader flightFilesReader = new FlightFilesReader();
             ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
             switch (userInputParams.getOutputPreference()) {
@@ -26,6 +29,21 @@ public class ReadAllFilesFromDirectory {
                     break;
                 case BY_FARE_DURATION:
                     Collections.sort(flights, Comparator.comparing(FlightInfo :: getFareCharges).thenComparing(FlightInfo::getFlightDuration));
+                    break;
+                default:
+                    break;
+            }
+            flightResults.put(csvFile.getName(), flights);
+        });*/
+        listOfFiles.parallelStream().forEach(csvFile -> {
+            FlightFilesReader flightFilesReader = new FlightFilesReader();
+            ArrayList<FlightInfo> flights = flightFilesReader.readCSVFiles(csvFile, userInputParams);
+            switch (userInputParams.getOutputPreference()) {
+                case BY_FARE:
+                    Collections.sort(flights, Comparator.comparing(FlightInfo::getFareCharges));
+                    break;
+                case BY_FARE_DURATION:
+                    Collections.sort(flights, Comparator.comparing(FlightInfo::getFareCharges).thenComparing(FlightInfo::getFlightDuration));
                     break;
                 default:
                     break;

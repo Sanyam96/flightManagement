@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * For output data
  * @author Sanyam Goel created on 22/8/18
  */
 public class OutputData {

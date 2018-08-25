@@ -3,6 +3,7 @@ package com.nagarro.airlines.models;
 import java.util.Date;
 
 /**
+ * For Flight Details
  * @author Sanyam Goel created on 22/8/18
  */
 public class FlightInfo {
