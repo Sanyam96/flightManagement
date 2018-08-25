@@ -1,6 +1,7 @@
 package com.nagarro.airlines.service;
 
 import com.nagarro.airlines.models.FlightInfo;
+import com.nagarro.airlines.models.OutputData;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.utilities.Constants;
 
@@ -15,7 +16,7 @@ import java.util.*;
 public class ReadAllFilesFromDirectory {
 
     /**
-     * function to read files parallelly from directory
+     * function to read files in parallel from directory
      *
      * @param flightResults
      * @param userInputParams
@@ -54,6 +55,8 @@ public class ReadAllFilesFromDirectory {
                     break;
             }
             flightResults.put(csvFile.getName(), flights);
+            OutputData outputData = new OutputData();
+            outputData.setFlights(flights);
         });
     }
 }
