@@ -3,6 +3,8 @@ package com.nagarro.airlines.utilities;
 import java.util.Scanner;
 
 /**
+ * Scanner class instance
+ *
  * @author Sanyam Goel created on 22/8/18
  */
 public class ScannerInstance {

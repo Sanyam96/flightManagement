@@ -1,20 +1,25 @@
 package com.nagarro.airlines.service;
 
-import com.nagarro.airlines.io.Output;
 import com.nagarro.airlines.models.FlightInfo;
-import com.nagarro.airlines.models.OutputData;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.utilities.Constants;
 
-import javax.sound.midi.Soundbank;
 import java.io.File;
 import java.util.*;
 
 /**
+ * class to read files from directory
+ *
  * @author Sanyam Goel created on 23/8/18
  */
 public class ReadAllFilesFromDirectory {
 
+    /**
+     * function to read files parallelly from directory
+     *
+     * @param flightResults
+     * @param userInputParams
+     */
     public void readFiles(HashMap<String, ArrayList<FlightInfo>> flightResults, UserInputParams userInputParams) {
 
         File flightFolder = new File(Constants.filesPath);

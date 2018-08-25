@@ -5,9 +5,10 @@ import com.nagarro.airlines.models.FlightInfo;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 /**
+ * Output class to display output
+ *
  * @author Sanyam Goel created on 25/8/18
  */
 public class Output {
@@ -27,7 +28,7 @@ public class Output {
                 }
             }
         }
-        if (emptyResults == true) {
+        if (emptyResults) {
             System.err.println("No flights found matching your search data.");
         }
     }

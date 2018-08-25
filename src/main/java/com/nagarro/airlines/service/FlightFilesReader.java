@@ -20,6 +20,13 @@ public class FlightFilesReader {
 
     ArrayList<FlightInfo> flightInfos = new ArrayList<>();
 
+    /**
+     * function to read all csv files
+     *
+     * @param csvFile
+     * @param userInputParams
+     * @return
+     */
     public ArrayList<FlightInfo> readCSVFiles(File csvFile, UserInputParams userInputParams) {
         String flightDetails = "";
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(Constants.datePattern);

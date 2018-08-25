@@ -15,6 +15,8 @@ import java.util.Date;
 import java.util.HashMap;
 
 /**
+ * Input class to take all input from user
+ *
  * @author Sanyam Goel created on 25/8/18
  */
 public class Input {
@@ -82,8 +84,6 @@ public class Input {
         readAllFilesFromDirectory.readFiles(flightResults, userInputParams);
 //        System.out.println(flightResults);
 
-        Output output = new Output();
-        output.displayFlightDetails(flightResults);
 
     }
 }

@@ -1,28 +1,31 @@
 package com.nagarro.airlines;
 
 import com.nagarro.airlines.io.Input;
+import com.nagarro.airlines.io.Output;
 import com.nagarro.airlines.models.FlightInfo;
-import com.nagarro.airlines.models.OutputData;
-import com.nagarro.airlines.models.UserInputParams;
-import com.nagarro.airlines.enums.FlightClass;
-import com.nagarro.airlines.enums.FlightOutputType;
-import com.nagarro.airlines.service.ReadAllFilesFromDirectory;
-import com.nagarro.airlines.utilities.Constants;
-import com.nagarro.airlines.utilities.ScannerInstance;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
+/**
+ * Main class file
+ */
 public class App {
 
     private static HashMap<String, ArrayList<FlightInfo>> flightResults = new HashMap<>();
 
+    /**
+     * Main function to starter code
+     *
+     * @param args
+     */
     public static void main(String[] args) {
 
         Input input = new Input();
+        Output output = new Output();
+
         input.takeInput(flightResults);
+        output.displayFlightDetails(flightResults);
     }
 
 }
