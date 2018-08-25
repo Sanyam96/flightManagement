@@ -1,11 +1,15 @@
 package com.nagarro.airlines.io;
 
+import com.nagarro.airlines.App;
 import com.nagarro.airlines.enums.FlightClass;
 import com.nagarro.airlines.enums.FlightOutputType;
 import com.nagarro.airlines.models.FlightInfo;
 import com.nagarro.airlines.models.UserInputParams;
 import com.nagarro.airlines.service.ReadAllFilesFromDirectory;
 import com.nagarro.airlines.utilities.Constants;
+import org.quartz.Job;
+import org.quartz.JobExecutionContext;
+import org.quartz.JobExecutionException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -19,7 +23,11 @@ import java.util.HashMap;
  *
  * @author Sanyam Goel created on 25/8/18
  */
-public class Input {
+public class Input implements Job {
+
+    private static UserInputParams userInputParams = null;
+    ReadAllFilesFromDirectory readAllFilesFromDirectory = new ReadAllFilesFromDirectory();
+    Output output = new Output();
 
     public void takeInput(HashMap<String, ArrayList<FlightInfo>> flightResults) {
 
@@ -29,7 +37,7 @@ public class Input {
         FlightClass flightClass = null;
         FlightOutputType flightOutputType = null;
         Date flightDate = null;
-        ReadAllFilesFromDirectory readAllFilesFromDirectory = new ReadAllFilesFromDirectory();
+//        ReadAllFilesFromDirectory readAllFilesFromDirectory = new ReadAllFilesFromDirectory();
 
         System.out.println("Enter Departure Location");
         departureLocation = "DEL";
@@ -80,10 +88,18 @@ public class Input {
         }
 
 
-        UserInputParams userInputParams = new UserInputParams(departureLocation, arrivalLocation, flightDate, flightClass, flightOutputType);
-        readAllFilesFromDirectory.readFiles(flightResults, userInputParams);
+        userInputParams = new UserInputParams(departureLocation, arrivalLocation, flightDate, flightClass, flightOutputType);
+//        readAllFilesFromDirectory.readFiles(flightResults, userInputParams);
 //        System.out.println(flightResults);
 
 
+    }
+
+    @Override
+    public void execute(JobExecutionContext jobExecutionContext) throws JobExecutionException {
+        System.out.println("Updated Results at.."+new Date());
+        System.out.println("-----------------------------------");
+        readAllFilesFromDirectory.readFiles(App.flightResults, userInputParams);
+        output.displayFlightDetails(App.flightResults);
     }
 }

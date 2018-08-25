@@ -29,16 +29,16 @@ public class App {
         input.takeInput(flightResults);
 
         try {
-            JobDetail job1 = JobBuilder.newJob(CronJobManager.class).withIdentity("job1", "group1").build();
+            JobDetail job1 = JobBuilder.newJob(Input.class).withIdentity("job1", "group1").build();
             Trigger trigger1 = TriggerBuilder.newTrigger()
                     .withIdentity("cronTrigger1", "group1")
-                    .withSchedule(CronScheduleBuilder.cronSchedule("0/5 * * * * ?"))
+                    .withSchedule(CronScheduleBuilder.cronSchedule("0/2 * * * * ?"))
                     .build();
             Scheduler scheduler1 = new StdSchedulerFactory().getScheduler();
             scheduler1.start();
             scheduler1.scheduleJob(job1, trigger1);
-            Thread.sleep(100000);
-            output.displayFlightDetails(flightResults);
+//            output.displayFlightDetails(flightResults);
+            Thread.sleep(10000);
             scheduler1.shutdown();
         } catch (Exception e) {
             e.printStackTrace();
